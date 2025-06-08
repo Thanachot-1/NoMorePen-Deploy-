@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Character(s) Generator</h1>
+        <form action="/generate" method="post">
+            <label for="model_names">Enter Characters:</label>
+            <input type="text" id="model_names" name="model_names" required>
+            <button type="submit">Generate Character(s)</button>
+        </form>
+        {% if images %}
+            <h2>Generated Character(s)</h2>
+            <div class="image-gallery">
+                {% for image in images %}
+                    <img src="{{ image }}" alt="Generated Image">
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
